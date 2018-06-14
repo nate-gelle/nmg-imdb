@@ -1,0 +1,12 @@
+<h1>Movies View</h1>
+<div ng-controller="MoviesController as MC">
+    <div id="moviesDisplay">
+        <div ng-repeat="movie in MC.movies" class="card">
+            <div class="card-body">
+                <p class="card-text">{{movie.name}}</p>
+                <p class="card-text">{{movie.genre}}</p>
+                <p class="card-text">{{movie.release}}</p>
+            </div>
+        </div>
+    </div>
+</div>

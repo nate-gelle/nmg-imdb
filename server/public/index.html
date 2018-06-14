@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NMG.IMDb</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- vendors/angular-material.css -->
+    <link rel="stylesheet" href="vendors/bootstrap.min.css">
+    <link rel="stylesheet" type="text/html" media="screen" href="styles/style.css"/>
+    <script src="vendors/angular.min.js"></script>
+    <!-- <script src="vendors/angular-material.js"></script> -->
+    <script src="vendors/angular-route.min.js"></script>
+    <script src="scripts/config.js"></script>
+    <!-- SOURCE IN CONTROLLERS AND SERVICE HERE -->
+    <script src="scripts/controllers/movies.controller.js"></script>
+    <script src="scripts/services/service.js"></script>
+</head>
+<body ng-app="movieApp">
+    <header>
+        <h1>NMG.IMDb</h1>
+    </header>
+    <nav>
+        <a href="/">⌂</a>
+        <a href="#!/movies">Add Movie</a>
+        <a href="#!/genres">Manage Genres</a>
+    </nav>
+    <ng-view>
+    </ng-view>
+</body>
+</html>

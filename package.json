@@ -1,0 +1,28 @@
+{
+  "name": "nmg-imdb",
+  "version": "1.0.0",
+  "description": "Week 5 extended project",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nate-gelle/nmg-imdb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nate-gelle/nmg-imdb/issues"
+  },
+  "homepage": "https://github.com/nate-gelle/nmg-imdb#readme",
+  "dependencies": {
+    "angular": "^1.7.2",
+    "angular-route": "^1.7.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "pg": "^7.4.3"
+  }
+}
