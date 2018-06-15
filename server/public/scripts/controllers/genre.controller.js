@@ -1,8 +1,8 @@
-app.controller('GenresController', function(service) {
-    console.log('genres.controller connected');
+app.controller('GenreController', function(service) {
+    console.log('genre.controller connected');
     let vm = this;
     vm.getGenres = function() {
-        console.log('in getGenres in genres.controller');
+        console.log('in getGenres in genre.controller');
         service.requestGenres()
             .then(function() {
                 vm.genres = service.genres.data;
@@ -11,7 +11,7 @@ app.controller('GenresController', function(service) {
     };
 
     vm.addGenre = function(name) {
-        console.log('in addGenre in genres.controller');
+        console.log('in addGenre in genre.controller');
         service.postGenre(name)
             .then(function() {
                 vm.getGenres();
