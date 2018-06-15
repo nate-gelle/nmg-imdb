@@ -1,0 +1,8 @@
+<h1>Genres</h1>
+<div ng-controller="GenreController as GC">
+    <div>
+        <h2>Add Genre:</h2>
+        <input type="text" ng-model="GC.genreIn">
+        <md-button class="md-raised md-primary" ng-click="GC.addGenre(GC.genreIn)">Submit</button>
+    </div>
+</div>

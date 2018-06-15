@@ -1,12 +1,26 @@
 <h1>Movies View</h1>
 <div ng-controller="MoviesController as MC">
+    <div>
+        <h2>Add Movie</h2>
+        <form novalidate class="simple-form">
+            <label><input type="text" placeholder="Title" ng-model="MC.titleIn"/></label><br/>
+            <label><select ng-options="genre.name for genre in genres" ng-model="MC.genreIn" value="genre"></select></label><br/>
+            <label><input type="date" placeholder="Release Date" ng-model="MC.releaseIn"/></label><br/>
+            <label><input type="text" placeholder="Run Time" ng-model="MC.timeIn"/></label><br/>
+            <input type="submit" value="Submit" ng-click="MC.addMovie(MC.titleIn, MC.genreIn, MC.releaseIn, MC.timeIn)"><br/>
+        </form>
+    </div>
     <div id="moviesDisplay">
-        <div ng-repeat="movie in MC.movies" class="card">
-            <div class="card-body">
+        <h2>Movies</h2>
+        <mat-card ng-repeat="movie in MC.movies">
+            <mat-card-content>
                 <p class="card-text">{{movie.name}}</p>
                 <p class="card-text">{{movie.genre}}</p>
-                <p class="card-text">{{movie.release}}</p>
-            </div>
-        </div>
+                <p class="card-text">{{movie.release | date: 'MM/dd/yyyy'}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button ng-click="MC.deleteMovie(movie.id)">Delete</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
 </div>

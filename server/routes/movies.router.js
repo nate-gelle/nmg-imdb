@@ -14,6 +14,21 @@ router.get('/', (req, res) => {
         console.log(`Error handling GET for /heroes`, error);
         res.sendStatus(500);
       })
-  });
+});
 
-  module.exports = router;
+router.post('/', (req, res) => {
+    console.log('Handling POST for /movies', req.body);
+    const queryText = `INSERT INTO movies (name, genre, release, time)
+                      Values ($1, $2, $3, $4);`;
+    pool.query(queryText, [req.body.name, req.body.genre, req.body.release, req.body.time])
+      .then((result) => {
+        console.log(`Finished POST for movies`, result);
+        res.sendStatus(200);
+      })
+      .catch((error) => {
+        console.log(`Error handling POST for /heroes`, error);
+        res.sendStatus(500);
+      })
+});
+
+module.exports = router;
