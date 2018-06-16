@@ -10,6 +10,8 @@ app.controller('GenreController', function(service) {
             })
     };
 
+    vm.getGenres();
+
     vm.addGenre = function(name) {
         console.log('in addGenre in genre.controller');
         service.postGenre(name)

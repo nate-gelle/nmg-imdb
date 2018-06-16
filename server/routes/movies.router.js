@@ -31,4 +31,20 @@ router.post('/', (req, res) => {
       })
 });
 
+router.delete('/:id', (req, res) => {
+    console.log('Handling delete request in /movies router');
+    const id = req.params.id;
+    const queryText = `DELETE FROM movies WHERE id=$1`;
+    pool.query(queryText, [id])
+    .then((result) => {
+      console.log('Successful deletion of movie', result);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(`Error handling DELETE request for /movie ${error}`);
+      res.sendStatus(500);
+    })
+});
+  
+
 module.exports = router;

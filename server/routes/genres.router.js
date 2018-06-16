@@ -31,4 +31,19 @@ router.post('/', (req, res) => {
       })
 });
 
+router.delete('/:id', (req, res) => {
+  console.log('Handling delete request in /hero router');
+  const id = req.params.id;
+  const queryText = `DELETE FROM genres WHERE id=$1`;
+  pool.query(queryText, [id])
+  .then((result) => {
+    console.log('Successful deletion on Server Hero side', result);
+    res.sendStatus(200);
+  })
+  .catch((error) => {
+    console.log(`Error handling DELETE request for /hero on server side ${error}`);
+    res.sendStatus(500);
+  })
+});
+
 module.exports = router;

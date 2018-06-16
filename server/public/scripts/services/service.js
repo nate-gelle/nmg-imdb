@@ -14,15 +14,15 @@ app.service( 'service', function( $http ) {
         })
     };
 
-    sv.postMovie = function(param1, param2, param3, param4) {
+    sv.postMovie = function(name, genre, release, time) {
         return $http({
           method: 'POST',
           url: '/movies',
           data: {
-            name: param1,
-            genre: param2,
-            release: param3,
-            time: param4,
+            name: name,
+            genre: genre,
+            release: release,
+            time: time
           }
         }).then(function(response) {
           console.log('added movie', response);
@@ -92,7 +92,7 @@ app.service( 'service', function( $http ) {
     sv.deleteGenre = function(id) {
         return $http({
             method: 'DELETE',
-            url: `/movies/${id}`
+            url: `/genres/${id}`
         }).then(function(response) {
             console.log('deleted genre', response);
         }).catch(function(error) {

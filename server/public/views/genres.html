@@ -2,7 +2,25 @@
 <div ng-controller="GenreController as GC">
     <div>
         <h2>Add Genre:</h2>
-        <input type="text" ng-model="GC.genreIn">
-        <md-button class="md-raised md-primary" ng-click="GC.addGenre(GC.genreIn)">Submit</button>
+        <form novalidate class="simple-form">
+                <input type="text" ng-model="GC.genreIn">
+                <input type="submit" value="Submit" ng-click="GC.addGenre(GC.genreIn)"><br/>
+        </form>
+    </div>
+    <div id="genreDisplay">
+        <table class="table table-stripe" id="genreTable">
+            <thead class="thead thead-dark">
+                <th>Genre</th>
+                <th>Movies in Genre</th>
+                <th> </th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="genre in GC.genres">
+                    <td>{{genre.name}}</td>
+                    <td>Number to be added</td>
+                    <td><md-button class="md-warn" ng-click="GC.deleteGenre(genre.id)">Delete</md-button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

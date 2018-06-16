@@ -3,10 +3,10 @@
     <div>
         <h2>Add Movie</h2>
         <form novalidate class="simple-form">
-            <label><input type="text" placeholder="Title" ng-model="MC.titleIn"/></label><br/>
-            <label><select ng-options="genre.name for genre in genres" ng-model="MC.genreIn" value="genre"></select></label><br/>
-            <label><input type="date" placeholder="Release Date" ng-model="MC.releaseIn"/></label><br/>
-            <label><input type="text" placeholder="Run Time" ng-model="MC.timeIn"/></label><br/>
+            <label>Title: <input type="text" ng-model="MC.titleIn"/></label><br/>
+            <label>Genre: <select ng-options="genre.name for genre in MC.genres" ng-model="MC.genreIn"></select></label><br/>
+            <label>Release Date: <input type="date" ng-model="MC.releaseIn"/></label><br/>
+            <label>Run Time: <input type="text" placeholder="Minutes" ng-model="MC.timeIn"/></label><br/>
             <input type="submit" value="Submit" ng-click="MC.addMovie(MC.titleIn, MC.genreIn, MC.releaseIn, MC.timeIn)"><br/>
         </form>
     </div>
