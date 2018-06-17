@@ -4,9 +4,12 @@
         <h2>Add Movie</h2>
         <form novalidate class="simple-form">
             <label>Title: <input type="text" ng-model="MC.titleIn"/></label><br/>
-            <label>Genre: <select ng-options="genre as genre.name for genre in MC.genres track by genre.id"/></label>
-            <label>Release Date: <input type="date" ng-model="MC.releaseIn"/></label><br/>
-            <label>Run Time: <input type="text" placeholder="Minutes" ng-model="MC.timeIn"/></label><br/>
+            <label for="genreSelect">Genre: </label>
+            <select id="genreSelect" ng-options="genre as genre.name for genre in MC.genres track by genre.id" ng-model="MC.genreIn"/><br/>
+            <br/>
+            <label for="releaseIn">Release Date: </label>
+            <input type="number" ng-model="MC.releaseIn"/><br/>
+            <label>Run Time: <input type="number" placeholder="Minutes" ng-model="MC.timeIn"/></label><br/>
             <input type="submit" value="Submit" ng-click="MC.addMovie(MC.titleIn, MC.genreIn, MC.releaseIn, MC.timeIn)"><br/>
         </form>
     </div>
@@ -16,7 +19,7 @@
             <mat-card-content>
                 <p class="card-text">{{movie.name}}</p>
                 <p class="card-text">{{movie.genre}}</p>
-                <p class="card-text">{{movie.release | date: 'MM/dd/yyyy'}}</p>
+                <p class="card-text">{{movie.release}}</p>
             </mat-card-content>
             <mat-card-actions>
                 <button ng-click="MC.deleteMovie(movie.id)">Delete</button>
