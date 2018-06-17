@@ -1,4 +1,4 @@
-const app = angular.module('movieApp', ['ngRoute', 'ngMaterial']);
+const app = angular.module('movieApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
 app.config(function($routeProvider) {
     $routeProvider.when('/', {

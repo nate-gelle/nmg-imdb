@@ -2,15 +2,41 @@
 <div ng-controller="MoviesController as MC">
     <div id="moviesInput">
         <h2>Add Movie</h2>
-        <form novalidate class="simple-form">
-            <label>Title: <input type="text" ng-model="MC.titleIn"/></label><br/>
-            <label for="genreSelect">Genre: </label>
-            <select id="genreSelect" ng-options="genre as genre.name for genre in MC.genres track by genre.id" ng-model="MC.genreIn"/><br/>
-            <br/>
-            <label for="releaseIn">Release Date: </label>
-            <input type="number" ng-model="MC.releaseIn"/><br/>
-            <label>Run Time: <input type="number" placeholder="Minutes" ng-model="MC.timeIn"/></label><br/>
-            <input type="submit" value="Submit" ng-click="MC.addMovie(MC.titleIn, MC.genreIn, MC.releaseIn, MC.timeIn)"><br/>
+        <form name="moviesForm">
+            <md-input-container>
+                <label>Title: </label>
+                <input type="text" ng-model="MC.titleIn" required/>
+                <div ng-messages="moviesForm.MC.titleIn.$error">
+                    <div ng-message="required">Your movie is missing info worth its weight in gold! I want the GOLD, give me the GOLD!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Genre: </label>
+                <md-select ng-model="MC.genreIn"required/>
+                    <md-option ng-value="genre" ng-repeat="genre in MC.genres">{{genre.name}}</md-option>
+                </md-select>
+                <div ng-messages="moviesForm.MC.genreIn.$error">
+                    <div ng-message="required">Your movie is missing info worth its weight in gold! I want the GOLD, give me the GOLD!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label for="releaseIn">Release Date: </label>
+                <input type="number" ng-model="MC.releaseIn" required/>
+                <div ng-messages="moviesForm.MC.releaseIn.$error">
+                    <div ng-message="required">Your movie is missing info worth its weight in gold! I want the GOLD, give me the GOLD!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Run Time: </label>
+                <input type="number" placeholder="Minutes" ng-model="MC.timeIn"/>
+                <div ng-messages="moviesForm.MC.timeIn.$error">
+                    <div ng-message="required">Your movie is missing info worth its weight in gold! I want the GOLD, give me the GOLD!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Submit</label>
+                <input type="submit" value="Submit" ng-click="MC.addMovie(MC.titleIn, MC.genreIn, MC.releaseIn, MC.timeIn)" required>
+            </md-input-container>
         </form>
     </div>
     <div id="moviesDisplay">
