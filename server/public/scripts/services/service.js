@@ -64,7 +64,7 @@ app.service( 'service', function( $http ) {
     sv.requestGenres = function() {
         return $http({
             method: 'GET',
-            url: '/genres'
+            url: '/genres/basic'
         }).then(function(response) {
           console.log('back from imdb with', response);
           sv.genres = response;

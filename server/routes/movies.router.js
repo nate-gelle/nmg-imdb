@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('Handling get movies request');
-    let queryText = `SELECT * FROM movies ORDER BY id;`;
+    let queryText = `SELECT * FROM movies`;
     pool.query(queryText)
       .then((result) => {
         console.log(`Finished GET server side for movies`, result);
@@ -19,15 +19,23 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log('Handling POST for /movies', req.body);
     const queryText = `INSERT INTO movies (title, genre, release, time)
-                      Values ($1, $2, $3, $4);`;
-    pool.query(queryText, [req.body.title, req.body.genre, req.body.release, req.body.time])
+                      Values ($1, $2, $3, $4)
+                      RETURNING id;`;
+    pool.query(queryText, [req.body.title, req.body.genre[0], req.body.release, req.body.time])
       .then((result) => {
-        console.log(`Finished POST for movies`, result);
-        res.sendStatus(200);
-      })
-      .catch((error) => {
-        console.log(`Error handling POST for /heroes`, error);
-        res.sendStatus(500);
+
+        const queryTextJ = `INSERT INTO junction (genre_id, movie_id)
+                            Values ($1, $2);`;
+        pool.query(queryTextJ, [req.body.genre[1], result])
+          .then((result) => {
+            res.sendStatus(200);
+          })
+          .catch((error) => {
+            console.log(`Error handling POST for /heroes`, error);
+            res.sendStatus(500);                   
+      //   console.log(`Finished POST for movies`, result);
+      //   res.sendStatus(200);
+          })
       })
 });
 

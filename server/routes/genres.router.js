@@ -4,7 +4,10 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
     console.log('Handling get genres request');
-    let queryText = `SELECT * FROM genres ORDER BY id;`;
+    let queryText = `SELECT genres.id, genres.name, count(*) FROM junction
+    JOIN genres ON junction.genre_id = genres.id
+    JOIN movies ON junction.movie_id = movies.id
+    GROUP BY genres.id, genres.name;`;
     pool.query(queryText)
       .then((result) => {
         console.log(`Finished GET for genres`, result);
@@ -15,6 +18,19 @@ router.get('/', (req, res) => {
         res.sendStatus(500);
       })
 });
+
+router.get('/basic', (req,res) => {
+  let queryText = `SELECT * FROM genres;`;
+  pool.query(queryText)
+    .then((result) => {
+      console.log(`Finished GET for genres`, result);
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log(`Error handling GET for genres`, error);
+    res.sendStatus(500);
+    })
+}); 
 
 router.post('/', (req, res) => {
     console.log('Handling POST for /genres', req.body);

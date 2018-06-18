@@ -16,8 +16,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="genre in GC.genres">
-                    <td>{{genre.name}}</td>
-                    <td>Number to be added</td>
+                    <td>{{genres.genre}}</td>
+                    <td>{{genres.title}}</td>
                     <td><md-button class="md-warn" ng-click="GC.deleteGenre(genre.id)">Delete</md-button></td>
                 </tr>
             </tbody>
