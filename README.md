@@ -41,3 +41,21 @@ The following variations are available for this project. Instead of **movies**, 
 
 - Movies -> Books and Genre -> Author
 - Movies -> Songs and Genre -> Artist
+
+## CREATE TABLE QUERIES
+
+CREATE TABLE "movies" (
+    "id" serial primary key,
+    "title" varchar(40) not null,
+    "genre_id" REFERENCES genres ON DELETE CASCADE,
+    "release" integer,
+    "time" integer,
+    "media" varchar(200) DEFAULT 'https://image.freepik.com/free-icon/film-role-ios-7-interface-symbol_318-34835.jpg'
+);
+
+CREATE TABLE "genres" (
+    "id" serial primary key,
+    "name" varchar(40) not null,
+);
+
+"movie_id" integer REFERENCES movies ON DELETE CASCADE

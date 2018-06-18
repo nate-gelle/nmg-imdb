@@ -18,9 +18,9 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     console.log('Handling POST for /movies', req.body);
-    const queryText = `INSERT INTO movies (name, genre, release, time)
+    const queryText = `INSERT INTO movies (title, genre, release, time)
                       Values ($1, $2, $3, $4);`;
-    pool.query(queryText, [req.body.name, req.body.genre, req.body.release, req.body.time])
+    pool.query(queryText, [req.body.title, req.body.genre, req.body.release, req.body.time])
       .then((result) => {
         console.log(`Finished POST for movies`, result);
         res.sendStatus(200);

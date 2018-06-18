@@ -1,5 +1,9 @@
-h1 {
+header {
     text-align: center;
     background-color: black;
     color: rgb(245, 3, 3);
+}
+
+#moviesInput {
+    background-color: rgb(193, 222, 248);
 }

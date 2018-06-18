@@ -11,9 +11,9 @@ app.controller('MoviesController', function(service) {
             })
     };
 
-    vm.addMovie = function(name, genre, release, time) {
+    vm.addMovie = function(title, genre, release, time) {
         console.log('in addMovies in movie.controller');
-        service.postMovie(name, genre, release, time)
+        service.postMovie(title, genre, release, time)
             .then(function() {
                 vm.getMovies();
             })  

@@ -14,12 +14,12 @@ app.service( 'service', function( $http ) {
         })
     };
 
-    sv.postMovie = function(name, genre, release, time) {
+    sv.postMovie = function(title, genre, release, time) {
         return $http({
           method: 'POST',
           url: '/movies',
           data: {
-            name: name,
+            title: title,
             genre: genre,
             release: release,
             time: time
