@@ -3,40 +3,41 @@
     <div id="moviesInput">
         <h2>Add Movie</h2>
         <form name="moviesForm">
-            <md-input-container>
-                <label>Title: </label>
-                <input type="text" ng-model="MC.titleIn" required/>
+            <md-input-container md-no-float>
+                <input aria-label="title" md-no-asterisk="true" type="text" placeholder="Title" ng-model="MC.titleIn" required/>
                 <div ng-messages="moviesForm.MC.titleIn.$error">
                     <div ng-message="required">Your movie is missing info worth its weight in gold! I want the GOLD, give me the GOLD!</div>
                 </div>
             </md-input-container>
-            <md-input-container>
-                <label>Genre: </label>
-                <md-select ng-model="MC.genreIn"required/>
+            <br/>
+            <md-input-container md-no-float>
+                <md-select aria-label="genre" md-no-asterisk="true" placeholder="Genre" ng-model="MC.genreIn" required multiple="true"/>
                     <md-option ng-value="genre" ng-repeat="genre in MC.genres">{{genre.name}}</md-option>
                 </md-select>
                 <div ng-messages="moviesForm.MC.genreIn.$error">
                     <div ng-message="required">Your movie is missing info worth its weight in gold! I want the GOLD, give me the GOLD!</div>
                 </div>
             </md-input-container>
-            <md-input-container>
-                <label for="releaseIn">Release Date: </label>
-                <input type="number" ng-model="MC.releaseIn" required/>
+            <br/>
+            <md-input-container md-no-float>
+                <input aria-label="releaseDate" md-no-asterisk="true" type="number" placeholder="Release Date" ng-model="MC.releaseIn" required/>
                 <div ng-messages="moviesForm.MC.releaseIn.$error">
                     <div ng-message="required">Your movie is missing info worth its weight in gold! I want the GOLD, give me the GOLD!</div>
                 </div>
             </md-input-container>
-            <md-input-container>
-                <label>Run Time: </label>
-                <input type="number" placeholder="Minutes" ng-model="MC.timeIn"/>
+            <br/>
+            <md-input-container md-no-float>
+                <input aria-label="runTime" md-no-asterisk="true" type="number" placeholder="Run Time" ng-model="MC.timeIn"/>
                 <div ng-messages="moviesForm.MC.timeIn.$error">
                     <div ng-message="required">Your movie is missing info worth its weight in gold! I want the GOLD, give me the GOLD!</div>
                 </div>
             </md-input-container>
-            <md-input-container>
+            <br/>
+            <!-- <md-input-container>
                 <label>Submit</label>
-                <input type="submit" value="Submit" ng-click="MC.addMovie(MC.titleIn, MC.genreIn, MC.releaseIn, MC.timeIn)" required>
-            </md-input-container>
+                <input type="submit" ng-click="MC.addMovie(MC.titleIn, MC.genreIn, MC.releaseIn, MC.timeIn)">
+            </md-input-container> -->
+            <md-button class="md-raised" ng-click="MC.addMovie(MC.titleIn, MC.genreIn, MC.releaseIn, MC.timeIn)">Submit</md-button>
         </form>
     </div>
     <div id="moviesDisplay">
