@@ -11,7 +11,7 @@
             </md-input-container>
             <br/>
             <md-input-container md-no-float>
-                <md-select aria-label="genre" md-no-asterisk="true" placeholder="Genre" ng-model="MC.genreIn" required multiple="true"/>
+                <md-select aria-label="genre" md-no-asterisk="true" placeholder="Genre" ng-model="MC.genreIn" required/>
                     <md-option ng-value="genre.name" ng-repeat="genre in MC.genres">{{genre.name}}</md-option>
                 </md-select>
                 <div ng-messages="moviesForm.MC.genreIn.$error">
