@@ -33,8 +33,6 @@ router.post('/', (req, res) => {
           .catch((error) => {
             console.log(`Error handling POST for /heroes`, error);
             res.sendStatus(500);                   
-      //   console.log(`Finished POST for movies`, result);
-      //   res.sendStatus(200);
           })
       })
 });

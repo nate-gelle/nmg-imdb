@@ -12,7 +12,7 @@
             <br/>
             <md-input-container md-no-float>
                 <md-select aria-label="genre" md-no-asterisk="true" placeholder="Genre" ng-model="MC.genreIn" required/>
-                    <md-option ng-value="[genre.name, genre.id]" ng-repeat="genre in MC.genres">{{genre.name}}</md-option>
+                    <md-option ng-value="[genre.name, genre.id]" ng-repeat="genre in MC.genreOptions">{{genre.name}}</md-option>
                 </md-select>
                 <div ng-messages="moviesForm.MC.genreIn.$error">
                     <div ng-message="required">Your movie is missing info worth its weight in gold! I want the GOLD, give me the GOLD!</div>
@@ -47,7 +47,6 @@
                 <p class="card-text">{{movie.title}}</p>
                 <p class="card-text">{{movie.genre}}</p>
                 <p class="card-text">{{movie.release}}</p>
-                <img src="{{movie.media}}">
             </mat-card-content>
             <mat-card-actions>
                 <button ng-click="MC.deleteMovie(movie.id)">Delete</button>

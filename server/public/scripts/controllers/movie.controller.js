@@ -37,10 +37,10 @@ app.controller('MoviesController', function(service) {
 
     vm.getGenres = function() {
         console.log('in getGenres in movie.controller');
-        service.requestGenres()
+        service.requestGenreOptions()
             .then(function() {
-                vm.genres = service.genres.data;
-                console.log('vm.genres=', vm.genres);
+                vm.genreOptions = service.genreOptions.data;
+                console.log('vm.genreOptions=', vm.genreOptions);
             })
     };
 

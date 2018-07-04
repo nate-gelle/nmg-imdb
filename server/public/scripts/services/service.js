@@ -45,7 +45,7 @@ app.service( 'service', function( $http ) {
     sv.putMovie = function(id, prop1, prop2, prop3, prop4, prop5) {
         return $http({
             method: 'PUT',
-            url: '/universe',
+            url: '/movies',
             params: {
                 id: id,
                 title: prop1,
@@ -64,13 +64,25 @@ app.service( 'service', function( $http ) {
     sv.requestGenres = function() {
         return $http({
             method: 'GET',
+            url: '/genres'
+        }).then(function(response) {
+            sv.genres = response;
+            console.log('sv.genres=', sv.genres);
+        }).catch(function(error){
+            console.log('error getting genres', error);
+            
+        })
+    }
+
+    sv.requestGenreOptions = function() {
+        return $http({
+            method: 'GET',
             url: '/genres/basic'
         }).then(function(response) {
-          console.log('back from imdb with', response);
-          sv.genres = response;
-          console.log('sv.genres=', sv.genres);
+          sv.genreOptions = response;
+          console.log('sv.genreOptions=', sv.genreOptions);
         }).catch(function(error){
-          console.log('error getting genres', error);
+          console.log('error getting genreOptions', error);
         })
     };
 

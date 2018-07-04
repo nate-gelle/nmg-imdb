@@ -8,7 +8,7 @@
         </form>
     </div>
     <div id="genreDisplay">
-        <table class="table table-stripe" id="genreTable">
+        <table class="table table-striped" id="genreTable">
             <thead class="thead thead-dark">
                 <th>Genre</th>
                 <th>Movies in Genre</th>
@@ -16,8 +16,8 @@
             </thead>
             <tbody>
                 <tr ng-repeat="genre in GC.genres">
-                    <td>{{genres.genre}}</td>
-                    <td>{{genres.title}}</td>
+                    <td>{{genre.name}}</td>
+                    <td>#</td>
                     <td><md-button class="md-warn" ng-click="GC.deleteGenre(genre.id)">Delete</md-button></td>
                 </tr>
             </tbody>
